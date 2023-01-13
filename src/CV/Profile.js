@@ -19,7 +19,10 @@ const Profile = () => {
           <a className="fa-icon fa-icon-2x" target="_blank" href="https://www.linkedin.com/in/inderjeetweb" title="Linikedin">
             <i className="fa fa-linkedin"></i>
           </a>
-          <a className="fa-icon fa-icon-2x" href="#" title="Download CV">
+          <a className="fa-icon fa-icon-2x" target="_blank" href="https://github.com/inderjeetweb" title="GitHub">
+            <i className="fa fa-git"></i>
+          </a>
+          <a className="fa-icon fa-icon-2x" href="https://drive.google.com/uc?id=1VQeoBlQwzwpgWGvNLU-CbiKQcBv6zN3_&amp;export=download" title="Download CV">
             <i className="fa fa-download"></i>
           </a>
         </p>
@@ -30,6 +33,20 @@ const Profile = () => {
     <div className="container">
       <div className="row">
         <div className="col-xs-12">
+
+          <div className="card">
+            <div className="customPadding-3">
+                <div className='personalInfoOuter'>
+                    <ul>
+                      {/* <li><i className="fa fa-user"></i> <a href='javascript:void(0)'>Software Developer Engineer - III</a> </li> */}
+                      <li><a href='Javascript:void(0)'><i className="fa fa-history"></i>6+ Years of Experience</a> </li>
+                      <li><a href='tel:9560232327'><i className="fa fa-phone"></i>9560232327</a> </li>
+                      <li><a href='mailto:inderjeetweb@gmail.com'><i className="fa fa fa-envelope-o"></i>inderjeetweb@gmail.com</a></li>
+                      <li><a href='Javascript:void(0)'><i className="fa fa fa-map-marker"></i>Gurugram, Haryana</a></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
 
           <div className="card">
             <div className="card-block">

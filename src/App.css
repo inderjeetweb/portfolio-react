@@ -6049,3 +6049,47 @@ label {
 .subModuleOuter ul {
     margin-top: 20px;
 }
+
+.personalInfoOuter ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.personalInfoOuter ul li {
+    list-style: none;
+}
+.personalInfoOuter ul li a {
+    color: #555;
+    font-size: 1.8rem;
+}
+
+.personalInfoOuter ul li a i {
+    margin-right: 5px;
+}
+
+.customPadding-3 {
+    padding: 3rem;
+}
+
+@media only screen and (min-width:650px) and (max-width:980px) {
+    .personalInfoOuter ul {
+        flex-wrap: wrap;
+    } 
+    .personalInfoOuter ul li {
+       flex-basis: 40%;
+    }
+    .personalInfoOuter ul li {
+        margin: 5px 0;
+    }
+}
+
+@media only screen and (max-width:650px) {
+    .personalInfoOuter ul {
+        display: block;
+    } 
+    .personalInfoOuter ul li {
+        margin: 13px 0;
+    }
+}
