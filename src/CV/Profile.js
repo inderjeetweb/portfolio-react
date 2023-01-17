@@ -8,7 +8,7 @@ const Profile = () => {
     <header className="white-text-container section-container">
       <div className="text-center">
         <h1>I am Inderjeet</h1>
-        <p>Full Stack Developer</p>
+        <p>Full Stack Developerrrrrr</p>
         <p>
           <a className="fa-icon fa-icon-2x" target="_blank" href="https://www.facebook.com/inderjeetweb" title="Facebook">
             <i className="fa fa-facebook"></i>
