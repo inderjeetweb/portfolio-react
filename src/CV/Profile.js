@@ -218,7 +218,7 @@ const Profile = () => {
           </div>
 
         {/* Contact */}
-          <Contact></Contact>
+         
         {/* Contact */}
    
 
