@@ -1,0 +1,79 @@
+$color:  #8391a2;
+
+.bgWhite {
+    background: #fff;
+}
+
+.headerOuter {
+    background: #fff;
+    box-shadow: inset -2px 0 1px #042868;
+    padding: 10px;
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: end;
+        li {
+            list-style: none;
+            margin: 0 14px;
+            a {
+                color: $color !important;
+                font-size: 1.6rem;
+            }
+
+        }
+    }
+}
+
+.sidebarOuter {
+    background: #313a46;
+    min-height: 95vh;
+    .logo {
+        width: 70%;
+        margin: 10px auto;
+        display: block;
+    }
+    ul {
+        margin: 10px 0 0 14px;
+        padding: 0;
+        li {
+            list-style: none;
+            a {
+                padding: 4px 0;
+                display: block;
+                color: $color !important;
+                cursor: pointer;
+                i {
+                    margin-right: 10px;
+                }
+                &.active {
+                    color: #fff !important
+                }
+            }
+
+            
+
+        }
+    }
+}
+
+.bodyContent {
+    padding: 22px 45px;
+}
+
+.postOuter {
+    input {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+}
+ckeditor {
+min-height: 500px;
+}
+
+.btn-dashboard-custom {
+    font-size: 1.5rem;
+}
+
+
+

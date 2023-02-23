@@ -1,14 +1,18 @@
 import React from 'react'
+import { db } from "../firebaseConfig";
+import {useState, useEffect} from 'react';
+import { Contact } from './Contact';
 
 const Profile = () => {
+  
   return (
     <>
        <div className="background-color-layer" style={{backgroundImage: `url('/images/cover.jpg')`}}></div>
   <main className="content-wrapper">
-    <header className="white-text-container section-container">
+    <header className="white-text-containerCustom section-containerCustom">
       <div className="text-center">
         <h1>I am Inderjeet</h1>
-        <p>Full Stack Developerrrrrr</p>
+        <p>Full Stack Developer</p>
         <p>
           <a className="fa-icon fa-icon-2x" target="_blank" href="https://www.facebook.com/inderjeetweb" title="Facebook">
             <i className="fa fa-facebook"></i>
@@ -20,7 +24,7 @@ const Profile = () => {
             <i className="fa fa-linkedin"></i>
           </a>
           <a className="fa-icon fa-icon-2x" target="_blank" href="https://github.com/inderjeetweb" title="GitHub">
-            <i className="fa fa-git"></i>
+            <i className="fa fa-github"></i>
           </a>
           <a className="fa-icon fa-icon-2x" href="https://drive.google.com/uc?id=1VQeoBlQwzwpgWGvNLU-CbiKQcBv6zN3_&amp;export=download" title="Download CV">
             <i className="fa fa-download"></i>
@@ -30,7 +34,7 @@ const Profile = () => {
     </header>
 
 
-    <div className="container">
+    <div className="containerCustom">
       <div className="row">
         <div className="col-xs-12">
 
@@ -213,25 +217,10 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="card">
-            <div className="card-block">
-              <h2>Contact</h2>
-              <form action="" className="reveal-content">
-                <div className="form-group">
-                  <input type="email" className="form-control" id="email" placeholder="Email" />
-                </div>
-                <div className="form-group">
-                  <input type="text" className="form-control" id="subject" placeholder="Subject" />
-                </div>
-                <div className="form-group">
-                  <textarea className="form-control" rows="5" placeholder="Enter your message"></textarea>
-                </div>
-                <div className="form-group">
-                  <button type="submit" className=" btn btn-primary">Send message</button>
-                </div>
-              </form>
-            </div>
-          </div>
+        {/* Contact */}
+          <Contact></Contact>
+        {/* Contact */}
+   
 
         </div>
       </div>
