@@ -5687,9 +5687,7 @@ body.white {
     z-index: 1
 }
 
-.section-containerCustom {
-    padding: 60px 0 40px
-}
+
 
 .work-experience {
     margin-bottom: 40px
@@ -6101,4 +6099,101 @@ label {
 .fieldTxtError {
     font-size: 1.5rem;
     color: #ff0000;
+}
+
+.headerStrip ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: end;
+}
+.headerStrip ul li {
+    list-style: none;
+   
+}
+.headerStrip ul li a {
+   
+    color: #fff;
+    padding: 7px;
+    cursor: pointer;
+    margin: 6px 9px;
+    display: block;
+}
+
+
+.section-containerCustom {
+    padding: 60px 0 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.section-containerCustomTiny {
+    padding: 10px 0 4px;
+
+}
+
+.section-containerCustomTiny h1 {
+    font-size: 4rem;
+}
+.section-containerCustomTiny p {
+    font-size: 1rem;
+}
+
+.section-containerCustomTiny .fa-icon.fa-icon-2x {
+    width: 31px;
+    height: 33px;
+    line-height: 14px;
+    font-size: 16px;
+}
+
+.postListOuter {
+    position: relative;
+}
+
+.postListOuter ul {
+    margin: 0;
+}
+.postListOuter > ul {
+    display: grid;
+    grid-template-columns: 25% 70%;
+    padding: 0;
+}
+.postListOuter li {
+    list-style: none;
+}
+
+.postListOuter img {
+    width: 100%;
+    padding: 25px;
+}
+
+.postListOuter .contentOuter {
+    padding-left: 20px;
+}
+.postListOuter .share {
+    position: absolute;
+    right: 14px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.blogDetails {
+    padding-top: 9px;
+    position: relative;
+}
+.blogDetails .hdrImg {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 27px;
+}
+
+.blogDetails .views {
+    position: absolute;
+    top: 6px;
+    right: 9px;
+}
+.blogDetails .views i {
+    margin-right: 5px;
 }

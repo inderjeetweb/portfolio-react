@@ -11,7 +11,7 @@ export const PostList = () => {
     const getUsers = async () => {
       const data = await getDocs(userCollectionRef);
       setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log(posts)
+      // console.log(posts)
     };
       getUsers();
     });
