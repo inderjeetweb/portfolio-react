@@ -17,7 +17,7 @@ export const AboutMe = () => {
                     website that ensured high traffic, page views, and User Experience. I have done work for both minor
                     and major projects. Currently i work on front end technologies like HTML, HTML5, CSS, CSS3,
                     Javascript, Jquery, Ajax, Bootstrap, Web Responsive, Adobe Photoshop, Illustrator, Wordpress,
-                    Angular 2/4/5/6/7, Typescript, PHP, Node.js, MySQL and MongoDB.</p>
+                    Angular 2/4/5/6/7, Typescript, PHP, Node.js, MySQL and MongoDB....</p>
 
                 </div>
               </div>
