@@ -5,7 +5,7 @@
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */ 
+ */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
     font-family: sans-serif;
@@ -15,7 +15,7 @@ html {
 
 body {
     margin: 0
-} 
+}
 
 article,
 aside,
@@ -6022,6 +6022,7 @@ label {
     -moz-column-count: 5;
     column-count: 5;
 }
+
 @media only screen and (max-width: 768px) {
     .devid-into-three {
         -webkit-column-count: 2;
@@ -6058,6 +6059,7 @@ label {
 .personalInfoOuter ul li {
     list-style: none;
 }
+
 .personalInfoOuter ul li a {
     color: #423d3d;
     font-size: 1.8rem;
@@ -6074,10 +6076,12 @@ label {
 @media only screen and (min-width:650px) and (max-width:980px) {
     .personalInfoOuter ul {
         flex-wrap: wrap;
-    } 
-    .personalInfoOuter ul li {
-       flex-basis: 40%;
     }
+
+    .personalInfoOuter ul li {
+        flex-basis: 40%;
+    }
+
     .personalInfoOuter ul li {
         margin: 5px 0;
     }
@@ -6086,7 +6090,8 @@ label {
 @media only screen and (max-width:650px) {
     .personalInfoOuter ul {
         display: block;
-    } 
+    }
+
     .personalInfoOuter ul li {
         margin: 13px 0;
     }
@@ -6107,12 +6112,14 @@ label {
     display: flex;
     justify-content: end;
 }
+
 .headerStrip ul li {
     list-style: none;
-   
+
 }
+
 .headerStrip ul li a {
-   
+
     color: #fff;
     padding: 7px;
     cursor: pointer;
@@ -6134,6 +6141,7 @@ label {
 .section-containerCustomTiny h1 {
     font-size: 4rem;
 }
+
 .section-containerCustomTiny p {
     font-size: 1rem;
 }
@@ -6152,11 +6160,13 @@ label {
 .postListOuter ul {
     margin: 0;
 }
-.postListOuter > ul {
+
+.postListOuter>ul {
     display: grid;
     grid-template-columns: 25% 70%;
     padding: 0;
 }
+
 .postListOuter li {
     list-style: none;
 }
@@ -6169,6 +6179,7 @@ label {
 .postListOuter .contentOuter {
     padding-left: 20px;
 }
+
 .postListOuter .share {
     position: absolute;
     right: 14px;
@@ -6181,6 +6192,7 @@ label {
     padding-top: 9px;
     position: relative;
 }
+
 .blogDetails .hdrImg {
     width: 200px;
     display: block;
@@ -6194,10 +6206,56 @@ label {
     top: 6px;
     right: 9px;
 }
+
 .blogDetails .views i {
     margin-right: 5px;
 }
 
-.work-exp .keypoints li {
-    margin: 7px 25px;
+.work-exp .progress-points > li {
+    padding: 1px 1px 33px 17px;
+    position: relative;
+    list-style: none;
+
 }
+
+.work-exp .progress-points > li::before {
+
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: #191919;
+    border: 2px solid white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.work-exp .progress-points > li::after {
+
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 14px;
+    width: 5px;
+    height: 100%;
+    background-color: #191919;
+    border: 2px solid white;
+    z-index: 0;
+}
+
+
+.work-exp .progress-points > li:last-child::after {
+    display: none;
+}
+
+.work-exp .keypoints {
+    margin-top: 7px;
+}
+
+.work-exp .keypoints > li {
+    margin-top: 7px;
+    list-style: circle;
+}
+

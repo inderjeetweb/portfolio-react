@@ -4,10 +4,10 @@ export const TechnicalKnowledge = () => {
   const skills = {
     Frontend: ['HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Ajax', 'Bootstrap', 'Web Responsive', 'Angular 2+', 'TypeScript'],
     Backend: ['Core PHP', 'Laravel', 'Node.js', 'Express'],
+    Server_and_cloud: ['Ubuntu', 'CentOS', 'AWS'],
     Database: ['MySQL', 'MongoDB'],
-    CMS: ['WordPress'],
     Design: ['Adobe Photoshop', 'Illustrator'],
-    Server_and_cloud: ['Ubuntu', 'CentOS', 'AWS'] 
+    CMS: ['WordPress'],
   };
 
   const formatCategory = (category) => category.replace(/_/g, ' '); // replaces underscore with space
