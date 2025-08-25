@@ -13,8 +13,8 @@ export const Profile = () => {
             <Strip />
             <AboutMe />
             <TechnicalKnowledge />
-            <Projects />
             <WorkExp />
+            <Projects />
             <Language />
             <Social />
 
