@@ -28,46 +28,61 @@ export const Projects = () => {
                 <li>
                   <div>
                     <strong>Rummy School (Laravel):</strong>
-                    </div> A learning module where users watch tutorial videos to understand rummy rules and attempt quizzes (easy, medium, hard). Based on quiz scores, users earn rewards.</li>
+                    </div> A learning module where users watch tutorial videos to understand rummy rules and attempt quizzes (easy, medium, hard). Based on quiz scores, users earn rewards.
+                    <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
+                    </li>
                 <li>
                   <div>
                     <strong>Influencers Program (Laravel)</strong>
-                    </div> Referral-based system where users invite friends and earn money based on their friends’ gameplay and winnings..</li>
+                    </div> Referral-based system where users invite friends and earn money based on their friends’ gameplay and winnings.
+                    <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
+                    </li>
                 <li>
                   <div>
                     <strong>The Grand Rummy Playground (Versions I–IV)</strong>
-                    </div> Multiple versions of a large-scale rummy event with enhanced UI and engagement features.</li>
+                    </div> Multiple versions of a large-scale rummy event with enhanced UI and engagement features.
+                    <p className='mt-0'> <small><strong>Tech Stack:</strong> HTML, CSS, JavaScript</small> </p>
+                    </li>
                 <li>
                   <div>
                     <strong>Rummy Tournaments with Leaderboards</strong>
-                    </div> Designed and implemented tournament structures with dynamic leaderboards to display player rankings.</li>
+                    </div> Designed and implemented tournament structures with dynamic leaderboards to display player rankings.
+                    <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), Nest.js (Node.js framework) HTML, CSS, JavaScript</small> </p>
+                    </li>
                 <li>
                   <div>
                     <strong>Dynamic Promotions</strong>
-                    </div> Created configurable promotions system to run personalized campaigns for users.</li>
+                    </div> Created configurable promotions system to run personalized campaigns for users.
+                    <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), Nest.js (Node.js framework) HTML, CSS, JavaScript</small> </p>
+                </li>
                 <li>
                   <div>
                     <strong>Multiple Dashboards (Laravel):</strong></div> Developed and maintained multiple dashboards for analytics, user insights, and campaign management.
                   <ul>
                     <li>
                       <div><strong>Porto (Laravel)</strong></div>
-                      <p>Designed an asset management system to upload and manage photos, videos, audio files, and fonts. Integrated CDN with version control for seamless asset delivery.</p>
+                      <p className='mb-0'>Designed an asset management system to upload and manage photos, videos, audio files, and fonts. Integrated CDN with version control for seamless asset delivery.</p>
+                      <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
                     </li>
                     <li>
                       <div><strong>Nova (Laravel)</strong></div>
-                      <p>Built a performance dashboard to monitor rake metrics across various categories, segmented by state, city, VIP tiers, and time periods (hourly, daily, monthly).</p>
+                      <p className='mb-0'>Built a performance dashboard to monitor rake metrics across various categories, segmented by state, city, VIP tiers, and time periods (hourly, daily, monthly).</p>
+                      <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
                     </li>
                     <li>
                       <div><strong>Luna (Node.js)</strong></div>
-                      <p>Developed an API-focused dashboard powered by Nest.js (Node.js) for efficient backend service management.</p>
+                      <p className='mb-0'>Developed an API-focused dashboard powered by Nest.js (Node.js) for efficient backend service management.</p>
+                      <p className='mt-0'> <small><strong>Tech Stack:</strong> Nest.js (Node.js framework)</small> </p>
                     </li>
                     <li>
                       <div><strong>Fornax (Laravel)</strong></div>
-                      <p>Created an advertising analytics dashboard to track company ad spend across Google Ads, YouTube, and Facebook with automated alerts.</p>
+                      <p className='mb-0'>Created an advertising analytics dashboard to track company ad spend across Google Ads, YouTube, and Facebook with automated alerts.</p>
+                      <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
                     </li>
                     <li>
                       <div><strong>Corvus, Elara, Stack (Laravel)</strong></div>
-                      <p>Developed dashboards to analyze user data and campaign performance, providing insights into campaign activities and user engagement.</p>
+                      <p className='mb-0'>Developed dashboards to analyze user data and campaign performance, providing insights into campaign activities and user engagement.</p>
+                      <p className='mt-0'> <small><strong>Tech Stack:</strong> Laravel (PHP framework), HTML, CSS, JavaScript</small> </p>
                     </li>
                   </ul>
                 </li>

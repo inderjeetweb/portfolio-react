@@ -5732,11 +5732,7 @@ body.white {
     padding: 4rem
 }
 
-@media (min-width:992px) {
-    .card .card-block {
-        padding: 6rem
-    }
-}
+
 
 .btn-custom {
     -webkit-transition: all .2s linear;
@@ -6263,3 +6259,14 @@ label {
     list-style: circle;
 }
 
+@media (max-width:480px) {
+    .card .card-block {
+        padding: 2rem !important
+    }
+}
+
+@media (min-width:992px) {
+    .card .card-block {
+        padding: 6rem
+    }
+}
