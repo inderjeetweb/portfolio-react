@@ -5,7 +5,7 @@ export const TechnicalKnowledge = () => {
     Frontend: ['HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Ajax', 'Bootstrap', 'Web Responsive', 'Angular 2+', 'TypeScript'],
     Backend: ['Core PHP', 'Laravel', 'Node.js', 'Express'],
     Server_and_cloud: ['Ubuntu', 'CentOS', 'AWS'],
-    Database: ['MySQL', 'MongoDB'],
+    Database: ['MySQL', 'MongoDB', 'Redis'],
     Design: ['Adobe Photoshop', 'Illustrator'],
     CMS: ['WordPress'],
   };

@@ -6049,6 +6049,10 @@ label {
     margin-top: 20px;
 }
 
+.subModuleOuter > ul > li {
+    padding-bottom: 14px;
+}
+
 .personalInfoOuter ul {
     margin: 0;
     padding: 0;
