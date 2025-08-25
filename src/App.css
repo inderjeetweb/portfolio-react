@@ -325,7 +325,7 @@ body {
     font-family: Lato, Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.58;
-    color: #555;
+    color: #423d3d;
     background-color: #fff
 }
 
@@ -2264,7 +2264,7 @@ output {
     display: block;
     font-size: 16px;
     line-height: 1.58;
-    color: #555
+    color: #423d3d
 }
 
 .form-control-custom {
@@ -2895,7 +2895,7 @@ textarea.input-lg {
 .btn-custom.focus,
 .btn-custom:focus,
 .btn-custom:hover {
-    color: #555;
+    color: #423d3d;
     text-decoration: none
 }
 
@@ -2923,14 +2923,14 @@ fieldset[disabled] a.btn-custom {
 }
 
 .btn-custom-default {
-    color: #555;
+    color: #423d3d;
     background-color: #fff;
     border-color: #ccc
 }
 
 .btn-custom-default.focus,
 .btn-custom-default:focus {
-    color: #555;
+    color: #423d3d;
     background-color: #e6e6e6;
     border-color: #8c8c8c
 }
@@ -2939,7 +2939,7 @@ fieldset[disabled] a.btn-custom {
 .btn-custom-default:active,
 .btn-custom-default:hover,
 .open>.btn-custom-default.dropdown-toggle {
-    color: #555;
+    color: #423d3d;
     background-color: #e6e6e6;
     border-color: #adadad
 }
@@ -2953,7 +2953,7 @@ fieldset[disabled] a.btn-custom {
 .open>.btn-custom-default.dropdown-toggle.focus,
 .open>.btn-custom-default.dropdown-toggle:focus,
 .open>.btn-custom-default.dropdown-toggle:hover {
-    color: #555;
+    color: #423d3d;
     background-color: #d4d4d4;
     border-color: #8c8c8c
 }
@@ -2979,7 +2979,7 @@ fieldset[disabled] .btn-custom-default:hover {
 
 .btn-custom-default .badge {
     color: #fff;
-    background-color: #555
+    background-color: #423d3d
 }
 
 .btn-custom-primary-custom {
@@ -3841,7 +3841,7 @@ tbody.collapse.in {
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
-    color: #555;
+    color: #423d3d;
     text-align: center;
     background-color: #eee;
     border: 1px solid transparent;
@@ -4015,7 +4015,7 @@ tbody.collapse.in {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-    color: #555;
+    color: #423d3d;
     background-color: #fff;
     border: 1px solid #ddd;
     border-bottom-color: transparent;
@@ -4587,7 +4587,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
-    color: #555;
+    color: #423d3d;
     background-color: #e7e7e7
 }
 
@@ -4620,7 +4620,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {
     background-color: #e7e7e7;
-    color: #555
+    color: #423d3d
 }
 
 @media (max-width:767px) {
@@ -4637,7 +4637,7 @@ tbody.collapse.in {
     .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
     .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,
     .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover {
-        color: #555;
+        color: #423d3d;
         background-color: #e7e7e7
     }
 
@@ -5934,7 +5934,7 @@ h5 small {
     bottom: inherit;
     left: 0;
     right: 0;
-    color: #555
+    color: #423d3d
 }
 
 .carousel-indicators {
@@ -6018,9 +6018,9 @@ label {
 }
 
 .devid-into-three {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
 }
 @media only screen and (max-width: 768px) {
     .devid-into-three {
@@ -6059,7 +6059,7 @@ label {
     list-style: none;
 }
 .personalInfoOuter ul li a {
-    color: #555;
+    color: #423d3d;
     font-size: 1.8rem;
 }
 
@@ -6196,4 +6196,8 @@ label {
 }
 .blogDetails .views i {
     margin-right: 5px;
+}
+
+.work-exp .keypoints li {
+    margin: 7px 25px;
 }

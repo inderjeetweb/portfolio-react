@@ -12,12 +12,9 @@ export const AboutMe = () => {
                 </div>
                 <div className="col-md-8">
 
-                  <p>Web developer with <strong>6+ years experience</strong> in designing and developing user interface,
-                    testing, debugging and training staff with web technologies. Developed dynamic and interactive
-                    website that ensured high traffic, page views, and User Experience. I have done work for both minor
-                    and major projects. Currently i work on front end technologies like HTML, HTML5, CSS, CSS3,
-                    Javascript, Jquery, Ajax, Bootstrap, Web Responsive, Adobe Photoshop, Illustrator, Wordpress,
-                    Angular 2/4/5/6/7, Typescript, PHP, Node.js, MySQL and MongoDB....</p>
+                  <p>
+                    <strong>Web Developer with 8+ years of experience</strong> in designing and developing user interfaces, testing, debugging, and mentoring teams on modern web technologies. Skilled in building dynamic, interactive, and responsive websites that drive high traffic, improve user engagement, and deliver exceptional user experiences. I have successfully contributed to both small-scale and enterprise-level projects across various domains.
+                  </p>
 
                 </div>
               </div>

@@ -14,7 +14,7 @@ export const Header = () => {
         <>
 
             <div className='headerStrip container-fluid'>
-                <ul>
+                {/* <ul>
                     <li>
                         <Link to="/">
                             Home
@@ -25,7 +25,7 @@ export const Header = () => {
                             Blog
                         </Link>
                     </li>
-                </ul>
+                </ul> */}
             </div>
             <header className={`white-text-containerCustom section-containerCustom ${dynaHeaderClass} `}>
                 <div className="text-center">
@@ -35,7 +35,7 @@ export const Header = () => {
                         <a className="fa-icon fa-icon-2x" target="_blank" href="https://www.facebook.com/inderjeetweb" title="Facebook">
                             <i className="fa fa-facebook"></i>
                         </a>
-                        <a className="fa-icon fa-icon-2x" target="_blank" href="https://twitter.com/inderjeetweb" title="Twitter">
+                        <a className="fa-icon fa-icon-2x" target="_blank" href="https://x.com/indjeet19" title="Twitter">
                             <i className="fa fa-twitter"></i>
                         </a>
                         <a className="fa-icon fa-icon-2x" target="_blank" href="https://www.linkedin.com/in/inderjeetweb" title="Linikedin">
@@ -44,9 +44,9 @@ export const Header = () => {
                         <a className="fa-icon fa-icon-2x" target="_blank" href="https://github.com/inderjeetweb" title="GitHub">
                             <i className="fa fa-github"></i>
                         </a>
-                        <a className="fa-icon fa-icon-2x" href="https://drive.google.com/uc?id=1VQeoBlQwzwpgWGvNLU-CbiKQcBv6zN3_&amp;export=download" title="Download CV">
+                        {/* <a className="fa-icon fa-icon-2x" href="https://drive.google.com/uc?id=1VQeoBlQwzwpgWGvNLU-CbiKQcBv6zN3_&amp;export=download" title="Download CV">
                             <i className="fa fa-download"></i>
-                        </a>
+                        </a> */}
                     </p>
                 </div>
             </header>

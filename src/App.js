@@ -26,16 +26,16 @@ function App() {
           <Routes>
                 <Route exact path="/" element={<CvLayout />}>
                     <Route exact path="/" element={<Profile />} />
-                    <Route exact path="/blog" element={<BlogList />} />
-                    <Route exact path="/blog/details" element={<BlogDetails />} />
+                    {/* <Route exact path="/blog" element={<BlogList />} />
+                    <Route exact path="/blog/details" element={<BlogDetails />} /> */}
                 </Route>
                 
-                <Route path="/dashboard" element={<Home />}>
+                {/* <Route path="/dashboard" element={<Home />}>
                     <Route exact path="/dashboard/home" element={<DashboardHome />} />
                     <Route exact path="/dashboard/post" element={<PostAdd />} />
                     <Route exact path="/dashboard/post-list" element={<PostList />} />
                     <Route path="*" element={<PageNotFound />} />
-                </Route>
+                </Route> */}
                 <Route path="*" element={<Notfound />} />  
           </Routes>
       </Router>
