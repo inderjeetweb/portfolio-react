@@ -26,14 +26,61 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FIELDS = ['name', 'email', 'message'];
 const emptyForm = { name: '', email: '', message: '', website: '' };
 
+// Anti-abuse limits. These client-side checks stop bots and repeat clicks; the EmailJS
+// dashboard (allowed domains, per-IP rate limits, optional reCAPTCHA) enforces limits server-side.
+const MIN_FILL_TIME_MS = 3000; // nobody can reach and fill in the form faster than this
+const COOLDOWN_MS = 60 * 1000; // one message per minute per browser
+const DAILY_LIMIT = 3; // messages per browser per 24 hours
+const DAY_MS = 24 * 60 * 60 * 1000;
+const MAX_LENGTH = { name: 100, email: 254, message: 2000 };
+const MAX_LINKS = 3;
+const SENT_LOG_KEY = 'contact-sent-at';
+
 function validate(values) {
   const errors = {};
-  if (!values.name.trim()) errors.name = 'Please enter your name.';
-  if (!values.email.trim()) errors.email = 'Please enter your email address.';
-  else if (!EMAIL_PATTERN.test(values.email.trim())) errors.email = 'Please enter a valid email address.';
-  if (!values.message.trim()) errors.message = 'Please enter a message.';
-  else if (values.message.trim().length < 10) errors.message = 'Please write at least 10 characters.';
+  const name = values.name.trim();
+  const email = values.email.trim();
+  const message = values.message.trim();
+
+  if (!name) errors.name = 'Please enter your name.';
+  else if (name.length > MAX_LENGTH.name) errors.name = `Please keep your name under ${MAX_LENGTH.name} characters.`;
+
+  if (!email) errors.email = 'Please enter your email address.';
+  else if (email.length > MAX_LENGTH.email || !EMAIL_PATTERN.test(email)) errors.email = 'Please enter a valid email address.';
+
+  if (!message) errors.message = 'Please enter a message.';
+  else if (message.length < 10) errors.message = 'Please write at least 10 characters.';
+  else if (message.length > MAX_LENGTH.message) errors.message = `Please keep your message under ${MAX_LENGTH.message} characters.`;
+  else if ((message.match(/https?:\/\/|www\./gi) || []).length > MAX_LINKS)
+    errors.message = `Please include no more than ${MAX_LINKS} links.`;
+
   return errors;
+}
+
+// Timestamps of messages sent from this browser in the last 24 hours.
+function readSentLog() {
+  try {
+    const log = JSON.parse(localStorage.getItem(SENT_LOG_KEY)) || [];
+    return log.filter((time) => Number.isFinite(time) && Date.now() - time < DAY_MS);
+  } catch {
+    return [];
+  }
+}
+
+function recordSent() {
+  try {
+    localStorage.setItem(SENT_LOG_KEY, JSON.stringify([...readSentLog(), Date.now()]));
+  } catch {
+    // Storage blocked (private mode): the per-browser limit just won't persist.
+  }
+}
+
+// 'daily' or 'cooldown' when this browser has sent too often, otherwise null.
+function sendLimitReached() {
+  const log = readSentLog();
+  if (log.length >= DAILY_LIMIT) return 'daily';
+  if (log.length && Date.now() - log[log.length - 1] < COOLDOWN_MS) return 'cooldown';
+  return null;
 }
 
 async function sendWithEmailJs({ name, email, message }) {
@@ -44,7 +91,15 @@ async function sendWithEmailJs({ name, email, message }) {
       service_id: emailJs.serviceId,
       template_id: emailJs.templateId,
       user_id: emailJs.publicKey,
-      template_params: { name, email, reply_to: email, message, title: contact.form.mailtoSubject },
+      // Covers both the README template and EmailJS's default "Contact Us" template.
+      template_params: {
+        name,
+        email,
+        reply_to: email,
+        message,
+        title: contact.form.mailtoSubject,
+        time: `${new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' })} IST`,
+      },
     }),
   });
   if (!response.ok) throw new Error(`EmailJS responded with ${response.status}`);
@@ -137,8 +192,9 @@ export default function Contact() {
 function ContactForm() {
   const [values, setValues] = useState(emptyForm);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | sending | sent | error | mailto
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error | mailto | cooldown | daily
   const fieldRefs = { name: useRef(null), email: useRef(null), message: useRef(null) };
+  const mountedAt = useRef(Date.now());
   const { form } = contact;
 
   const handleChange = (event) => {
@@ -149,13 +205,23 @@ function ContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (values.website) return; // Honeypot field: only bots fill it in.
+    if (status === 'sending') return;
 
     const nextErrors = validate(values);
     setErrors(nextErrors);
     const firstInvalid = FIELDS.find((field) => nextErrors[field]);
     if (firstInvalid) {
       fieldRefs[firstInvalid].current?.focus();
+      return;
+    }
+
+    // Bot traps: the hidden honeypot field was filled, the form was submitted impossibly
+    // fast, or the browser is automated. Pretend it worked so bots get no signal.
+    const looksAutomated =
+      values.website || navigator.webdriver || Date.now() - mountedAt.current < MIN_FILL_TIME_MS;
+    if (looksAutomated) {
+      setValues(emptyForm);
+      setStatus('sent');
       return;
     }
 
@@ -167,9 +233,16 @@ function ContactForm() {
       return;
     }
 
+    const limit = sendLimitReached();
+    if (limit) {
+      setStatus(limit);
+      return;
+    }
+
     setStatus('sending');
     try {
       await sendWithEmailJs(message);
+      recordSent();
       setValues(emptyForm);
       setStatus('sent');
     } catch {
@@ -204,14 +277,28 @@ function ContactForm() {
           <label htmlFor="contact-name" className="text-sm font-medium">
             {form.nameLabel}
           </label>
-          <input type="text" autoComplete="name" required placeholder="Your name" {...fieldProps('name')} />
+          <input
+            type="text"
+            autoComplete="name"
+            required
+            maxLength={MAX_LENGTH.name}
+            placeholder="Your name"
+            {...fieldProps('name')}
+          />
           {fieldError('name')}
         </div>
         <div>
           <label htmlFor="contact-email" className="text-sm font-medium">
             {form.emailLabel}
           </label>
-          <input type="email" autoComplete="email" required placeholder="you@example.com" {...fieldProps('email')} />
+          <input
+            type="email"
+            autoComplete="email"
+            required
+            maxLength={MAX_LENGTH.email}
+            placeholder="you@example.com"
+            {...fieldProps('email')}
+          />
           {fieldError('email')}
         </div>
       </div>
@@ -262,6 +349,20 @@ function ContactForm() {
         {status === 'error' && (
           <StatusMessage tone="error">
             Something went wrong while sending. Please try again, or email me at{' '}
+            <a className="link-underline font-medium" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
+            .
+          </StatusMessage>
+        )}
+        {status === 'cooldown' && (
+          <StatusMessage tone="success">
+            Your last message was just sent. Please wait a minute before sending another.
+          </StatusMessage>
+        )}
+        {status === 'daily' && (
+          <StatusMessage tone="error">
+            You’ve reached today’s limit of {DAILY_LIMIT} messages. For anything else, email me at{' '}
             <a className="link-underline font-medium" href={`mailto:${profile.email}`}>
               {profile.email}
             </a>

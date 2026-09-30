@@ -38,3 +38,13 @@ test('validates the contact form before sending', () => {
   expect(screen.getByText('Please enter your name.')).toBeInTheDocument();
   expect(screen.getByLabelText('Email')).toHaveAttribute('aria-invalid', 'true');
 });
+
+test('rejects link-stuffed spam messages', () => {
+  render(<App />);
+
+  fireEvent.change(screen.getByLabelText('Message'), {
+    target: { value: 'Buy now https://a.example https://b.example https://c.example https://d.example' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /send message/i }));
+  expect(screen.getByText('Please include no more than 3 links.')).toBeInTheDocument();
+});
