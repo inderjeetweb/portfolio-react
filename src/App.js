@@ -1,48 +1,54 @@
-import CvLayout from './CV/CvLayout';
-import { Profile } from './CV/Profile';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./App.css";
+import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion';
+import { IconContext } from 'react-icons';
+import About from './components/About';
+import Contact from './components/Contact';
+import Education from './components/Education';
+import Experience from './components/Experience';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+import NotFound from './components/NotFound';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
 
-// import {useState, useEffect} from 'react';
-import ReactDOM from 'react-dom';
-import Home from './Dashboard/Dashboard';
-import { Home as DashboardHome} from "./Dashboard/Home";
-import { PostAdd } from './Dashboard/Post/PostAdd';
-import { PostList } from './Dashboard/Post/PostList';
-import { Notfound } from './Notfound';
-import { BrowserRouter as Router, Route, Routes,Outlet } from 'react-router-dom' ;
-import { PageNotFound } from './Dashboard/PageNotFound';
-import { BlogList } from './Blog/BlogList';
-import { BlogDetails } from './Blog/BlogDetails';
+// Icons are decorative by default; icon-only links and buttons carry their own aria-label.
+const iconDefaults = { attr: { 'aria-hidden': true } };
 
+// Single-page site: anything other than the home page is a 404.
+const isHomePage = ['/', '/index.html'].includes(window.location.pathname);
 
-
-
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Router>
-          <Routes>
-                <Route exact path="/" element={<CvLayout />}>
-                    <Route exact path="/" element={<Profile />} />
-                    {/* <Route exact path="/blog" element={<BlogList />} />
-                    <Route exact path="/blog/details" element={<BlogDetails />} /> */}
-                </Route>
-                
-                {/* <Route path="/dashboard" element={<Home />}>
-                    <Route exact path="/dashboard/home" element={<DashboardHome />} />
-                    <Route exact path="/dashboard/post" element={<PostAdd />} />
-                    <Route exact path="/dashboard/post-list" element={<PostList />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Route> */}
-                <Route path="*" element={<Notfound />} />  
-          </Routes>
-      </Router>
-
-    </div>
+    // LazyMotion + `m` components keep Framer Motion's bundle small;
+    // reducedMotion="user" honours the OS "reduce motion" setting.
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">
+        <IconContext.Provider value={iconDefaults}>{isHomePage ? <Portfolio /> : <NotFound />}</IconContext.Provider>
+      </MotionConfig>
+    </LazyMotion>
   );
 }
 
-
-export default App;
+function Portfolio() {
+  return (
+    <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2 focus:font-medium focus:shadow-lift"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main" tabIndex={-1} className="focus:outline-none">
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
+}

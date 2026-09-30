@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Inderjeet Das — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio for [inderjeet-profile.web.app](https://inderjeet-profile.web.app/).
 
-## Available Scripts
+Built with React (Create React App), Tailwind CSS 3, Framer Motion and react-icons. Hosted on Firebase Hosting.
 
-In the project directory, you can run:
+## Run locally
 
-### `npm start`
+```bash
+npm install
+npm start          # http://localhost:3000
+npm test           # smoke tests
+npm run build      # production build in /build
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Page looks unstyled in dev?** CRA only enables Tailwind if `tailwind.config.js` exists when `npm start` launches. A dev server started before Tailwind was added serves raw `@tailwind` directives. Stop it and run `npm start` again.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Editing content
 
-### `npm test`
+All copy lives in [`src/data/content.js`](src/data/content.js): profile, hero roles, about text and stats, skills, experience, projects, education, languages and contact labels. Edit that file. You don't need to touch the components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Photo:** `public/images/profile-480.jpg`, `profile-720.jpg`, `profile-960.jpg` (4:5 crops of `inderjeet.jpg`).
+- **Resume button:** set `profile.resumeUrl`. To self-host, put a PDF at `public/resume.pdf` and use `'/resume.pdf'`.
+- **Colours:** the whole palette (midnight navy with sky blue) is a set of tokens at the top of [`src/index.css`](src/index.css), in light and dark variants. Change the values there. Keep text pairs at 4.5:1 contrast or higher.
+- **Icons:** skills and projects look up icons by name in [`src/lib/icons.js`](src/lib/icons.js). New entries without a match get a neutral fallback icon.
+- **SEO and social previews:** these are static tags in [`public/index.html`](public/index.html) (title, description, Open Graph, Twitter and JSON-LD), because link-preview scrapers don't run JavaScript. Update them if your title changes. The preview image is `public/og-image.jpg` (1200×630).
 
-### `npm run build`
+## Contact form (EmailJS, optional)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+With no configuration, **Send message** opens the visitor's email app with the message pre-filled (mailto). To send straight from the page:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Create a free account at [emailjs.com](https://www.emailjs.com/).
+2. **Email Services → Add New Service** (e.g. Gmail), and connect `inderjeetweb@gmail.com`. Note the **Service ID**.
+3. **Email Templates → Create New Template.** Use these variables:
+   - Subject: `{{title}} — {{name}}`
+   - Body: `{{message}}` plus `From: {{name}} <{{email}}>`
+   - **Reply To:** `{{email}}`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Note the **Template ID**.
+4. **Account → General:** copy your **Public Key**.
+5. Copy `.env.example` to `.env.local`, fill in the three values, then rebuild (`npm run build`). CRA embeds env vars at build time.
+6. Optional: in EmailJS **Account → Security**, restrict requests to your domain.
 
-### `npm run eject`
+## Deploy (Firebase Hosting)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install -g firebase-tools   # once
+firebase login                  # once
+npm run build
+firebase deploy --only hosting
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`firebase.json` serves `/build` and rewrites every path to `index.html` (unknown paths show the 404 view). It also caches the content-hashed `/static` assets for a year.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+  App.js                 app shell: motion config, skip link, sections
+  data/content.js        all site text
+  components/            Navbar, Hero, About, Skills, Experience, Projects,
+                         Education, Contact, Footer, NotFound
+  components/ui/         Button, Container, Section, Reveal (scroll animations),
+                         SocialLinks, ThemeToggle, Typewriter
+  hooks/                 useTheme, useScroll (scrolled state + scroll-spy), useTypewriter
+  lib/                   icons.js (icon lookup), motion.js (shared animation variants)
+```
 
-## Learn More
+## Accessibility and motion
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Animations run once, last 0.3–0.6 s, and ease out. They are disabled when the OS "reduce motion" setting is on.
+- The theme defaults to dark. The visitor's choice is saved in `localStorage` and applied before first paint.
+- The site uses semantic landmarks and a skip link. The mobile menu works from the keyboard (Escape closes it), and focus states are visible.
